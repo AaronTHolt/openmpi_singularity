@@ -29,8 +29,6 @@ source /etc/profile.d/z00_lmod.sh
 yum install -y pciutils
 yum install -y which
 
-module avail
-
 # Editors
 yum install -y vim emacs
 
@@ -80,10 +78,6 @@ spack compiler find
 spack install cmake@$cmake_ver %gcc@$gcc_ver
 module load cmake-$cmake_ver-gcc-$gcc_ver
 
-# bzip2 test
-#export bzip2_ver=1.0.6
-#spack install bzip2@$bzip2_ver
-
 # OpenMPI with psm2 for Summit
 spack install openmpi@$openmpi_ver %gcc@$gcc_ver fabrics=psm2,verbs thread_multiple=True
 
@@ -100,9 +94,6 @@ export PS1="Singularity > "
 export gcc_ver=6.4.0
 export cmake_ver=3.10.1
 export openmpi_ver=2.1.0
-
-#bzip2_ver=1.0.6
-#export bzip2_ver
 
 source /etc/profile
 SPACK_ROOT=/app/spack
