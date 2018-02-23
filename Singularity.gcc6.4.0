@@ -8,6 +8,7 @@ From: AaronTHolt/openmpi_singularity:spack_base
 source /etc/profile
 
 # Install Spack
+useradd spack
 su - spack
 cd /app
 export gcc_ver=6.4.0
