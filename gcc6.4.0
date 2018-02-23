@@ -1,0 +1,49 @@
+BootStrap:shub
+From: AaronTHolt/openmpi_singularity:spack_base
+
+
+%post
+
+# Environment modules
+source /etc/profile
+
+# Install Spack
+su - spack
+cd /app
+export gcc_ver=6.4.0
+
+export SPACK_ROOT=/app/spack
+export PATH=$SPACK_ROOT/bin:$PATH
+source $SPACK_ROOT/share/spack/setup-env.sh
+
+# GCC
+spack install gcc@$gcc_ver
+module load gcc-$gcc_ver-gcc-4.8.5
+spack compiler add
+spack compiler find
+
+# Exit spack user
+exit
+
+# Edit command prompt so its short and shows you in a container
+export PS1="Singularity > "
+
+
+
+######################################################
+%environment
+export gcc_ver=6.4.0
+
+source /etc/profile
+SPACK_ROOT=/app/spack
+export SPACK_ROOT
+source $SPACK_ROOT/share/spack/setup-env.sh
+
+module load gcc-$gcc_ver-gcc-4.8.5
+
+
+
+
+
+#
+
